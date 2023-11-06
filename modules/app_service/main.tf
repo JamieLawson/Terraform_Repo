@@ -22,13 +22,8 @@ resource "azurerm_service_plan" "service_plan" {
 }
 
 
-
-// Linux web app
-
-
-
-// Windows web app
-
-
-
-// vNet integration
+resource "azurerm_app_service_virtual_network_swift_connection" "vnet_integration" {
+  count = var.subnet_id != "" ? 1 : 0
+  app_service_id = azurerm_app_service.service_plan.id
+  subnet_id      = var.subnet_id
+}

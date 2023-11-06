@@ -40,20 +40,13 @@ variable "operating_system" {
 }
 
 
-variable "app_service_sku" {
+variable "service_plan_id" {
   type = string
-  description = "Sku for the Azure app service plan"
-  default = "S1"
+  description = "Id for the application service plan to create the web app on"
 }
 
-
-variable "subnet_id" {
-  type = string
-  description = "Subnet Id to use for service plan vNet integration"
-  default = ""
-}
 
 
 locals {
-  app_service_name = concat("AS-", var.workload_name, "-", var.environment_type)
+  web_app_name = concat("Web-", var.workload_name, "-", var.environment_type)
 }
